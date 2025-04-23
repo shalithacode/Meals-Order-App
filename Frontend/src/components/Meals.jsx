@@ -20,7 +20,7 @@ function Meals() {
       {loadedMeals.map((meal) => (
         <MealItem
           key={meal._id}
-          meal={{ name: meal.name, price: meal.price, image: meal.image, description: meal.description }}
+          meal={{ id: meal._id, name: meal.name, price: meal.price, image: meal.image, description: meal.description }}
         />
       ))}
     </ul>
