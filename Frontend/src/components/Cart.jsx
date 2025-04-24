@@ -17,7 +17,11 @@ function Cart() {
   }
   const totalPrice = cartCtx.items.reduce((acc, item) => acc + item.price * item.qty, 0);
   return (
-    <Modal className="cart" open={userPrograssCtx.prograss === "cart"}>
+    <Modal
+      className="cart"
+      open={userPrograssCtx.prograss === "cart"}
+      onClose={userPrograssCtx.prograss === "cart" ? handleHideCart : null}
+    >
       <h2>Your Cart</h2>
       <ul>
         {cartCtx.items.map((item) => (
@@ -29,7 +33,7 @@ function Cart() {
       </p>
       <p className="modal-actions">
         <Button onClick={handleHideCart}>Close</Button>
-        <Button onClick={handleShowCheckout}>Checkout</Button>
+        {cartCtx.items.length > 0 && <Button onClick={handleShowCheckout}>Checkout</Button>}
       </p>
     </Modal>
   );
