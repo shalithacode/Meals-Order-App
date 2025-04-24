@@ -2,6 +2,7 @@ import React from "react";
 import Button from "./UI/Button";
 import { useContext } from "react";
 import { CartContext } from "./store/CartContext";
+
 function MealItem({ meal }) {
   const cartCtx = useContext(CartContext);
 
@@ -16,7 +17,7 @@ function MealItem({ meal }) {
         <div>
           <h3>{meal.name} </h3>
           <p className="meal-item-price">
-            {new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(meal.price)}{" "}
+            {new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(meal.price)}
           </p>
           <p className="meal-item-description">{meal.description}</p>
         </div>
