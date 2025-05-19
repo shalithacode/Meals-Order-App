@@ -19,7 +19,7 @@ app.get("/meals", async (req, res) => {
     const response = await Menu.find();
     res.status(200).json({ meals: response });
   } catch (err) {
-    if (!err.statusCode) statusCode = 500;
+    if (!err.statusCode) err.statusCode = 500;
     next(err);
   }
 });
@@ -63,7 +63,7 @@ app.post(
       const savedOrder = await newOrder.save();
       res.status(201).json({ message: "Order created!", order: savedOrder });
     } catch (err) {
-      if (!err.statusCode) statusCode = 500;
+      if (!err.statusCode) err.statusCode = 500;
       next(err);
     }
   }
