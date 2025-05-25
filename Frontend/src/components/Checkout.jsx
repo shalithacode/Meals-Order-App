@@ -19,7 +19,11 @@ function Checkout() {
     const fd = new FormData(event.target);
     const customerData = Object.fromEntries(fd.entries());
 
-    //.. send to backend
+    fetch("http://localhost:8080/orders", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ order: { items: cartCtx.items, customer: customerData } }),
+    });
   }
   return (
     <Modal open={userProgressCtx.prograss === "checkout"} onClose={handleClose}>
